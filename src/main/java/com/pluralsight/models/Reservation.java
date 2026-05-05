@@ -38,7 +38,7 @@ public class Reservation {
         return price;
     }
 
-    public int getNumberOfNights() {
+    public double getNumberOfNights() {
         return numberOfNights;
     }
 
@@ -54,7 +54,7 @@ public class Reservation {
         this.weekend = isWeekend;
     }
 
-    public int getReservationTotal() {
+    public double getReservationTotal() {
         return reservationTotal;
     }
 }
