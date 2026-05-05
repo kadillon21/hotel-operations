@@ -24,6 +24,8 @@ public class Reservation {
             this.price *= 1.1;
         }
 
+        this.reservationTotal = this.price * this.numberOfNights;
+
     }
 
     public String getRoomType() {

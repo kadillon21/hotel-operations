@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Room room = new Room(2, 300, true, true, false);
+        Room room = new Room(2, 300, false, false, false);
         Reservation reservation = new Reservation("King", 4,  true);
         Employee employee = new Employee(39049, "Kendall", "Management", 23.75, 60);
         NumberFormat money = NumberFormat.getCurrencyInstance();
