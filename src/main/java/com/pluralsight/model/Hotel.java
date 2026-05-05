@@ -51,4 +51,12 @@ public class Hotel {
     public String getName() {
         return name;
     }
+
+    public int getNumberOfSuites() {
+        return numberOfSuites;
+    }
+
+    public int getNumberOfRooms() {
+        return numberOfRooms;
+    }
 }

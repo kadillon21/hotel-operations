@@ -1,18 +1,23 @@
 package com.pluralsight;
 
-import com.pluralsight.models.Employee;
-import com.pluralsight.models.Reservation;
-import com.pluralsight.models.Room;
+import com.pluralsight.model.Employee;
+import com.pluralsight.model.Hotel;
+import com.pluralsight.model.Reservation;
+import com.pluralsight.model.Room;
 
 import java.text.NumberFormat;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
 
     public static void main(String[] args) {
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH");
+
         Room room = new Room(2, 300, false, false, false);
         Reservation reservation = new Reservation("King", 4,  true);
         Employee employee = new Employee(39049, "Kendall", "Management", 23.75, 60);
+        Hotel hotel = new Hotel("Hilton", 100, 30, 60, 25);
         NumberFormat money = NumberFormat.getCurrencyInstance();
         String C = "\u001B[38;5;208m";
         String R = "\u001B[0m";
@@ -41,6 +46,13 @@ public class Main {
         System.out.println(C + "\tOvertime Hours: " + R + employee.getOvertimeHours());
         System.out.println(C + "\tTotal Pay: " + R + employee.getTotalPay());
 
+
+        System.out.println();
+        System.out.println(hotel.getName() + " Information:");
+        System.out.println(C + "\t Total Rooms: " + R + hotel.getNumberOfRooms());
+        System.out.println(C + "\t Total Suites: " + R + hotel.getNumberOfSuites());
+        System.out.println(C + "\t Available rooms: " + R + hotel.getAvailableRooms());
+        System.out.println(C + "\t Available Suites: " + R + hotel.getAvailableSuites());
 
 
     }
