@@ -7,8 +7,6 @@ public class Hotel {
     private int numberOfRooms;
     private int bookedSuites;
     private int bookedBasicRooms;
-    private int availableSuites;
-    private int availableRooms;
 
     public Hotel(String name, int numberOfRooms, int numberOfSuites) {
         this.name = name;
@@ -16,7 +14,7 @@ public class Hotel {
         this.numberOfSuites = numberOfSuites;
     }
 
-    public Hotel(String name, int numberOfSuites, int numberOfRooms, int bookedSuites, int bookedBasicRooms) {
+    public Hotel(String name, int numberOfRooms, int numberOfSuites, int bookedBasicRooms, int bookedSuites) {
         this.name = name;
         this.numberOfSuites = numberOfSuites;
         this.numberOfRooms = numberOfRooms;
@@ -26,15 +24,15 @@ public class Hotel {
 
     public boolean bookRoom(int numberOfRooms, boolean isSuite) {
         if(isSuite){
-            if(this.availableSuites - numberOfRooms >= 0){
-                this.availableRooms -= numberOfRooms;
+            if(this.bookedSuites + numberOfRooms >= this.numberOfSuites){
+                this.bookedSuites += numberOfRooms;
                 return true;
             } else {
                 return false;
             }
         } else {
-            if (this.availableRooms - numberOfRooms >= 0) {
-                this.availableRooms -= numberOfRooms;
+            if (this.bookedBasicRooms + numberOfRooms >= this.numberOfRooms) {
+                this.bookedSuites += numberOfRooms;
                 return true;
             } else {
                 return false;
@@ -42,14 +40,15 @@ public class Hotel {
         }
     }
 
-    public void getAvailableSuites() {
-        this.availableSuites = this.numberOfSuites - this.bookedSuites;
+    public int getAvailableSuites() {
+        return this.numberOfSuites - this.bookedSuites;
     }
 
-    public void getAvailableRooms(){
-        this.availableRooms = this.numberOfRooms - this.bookedBasicRooms;
+    public int getAvailableRooms(){
+        return this.numberOfRooms - this.bookedBasicRooms;
     }
 
-
-
+    public String getName() {
+        return name;
+    }
 }
