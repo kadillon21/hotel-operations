@@ -35,4 +35,18 @@ public class Room {
     public boolean isAvailable() {
         return !isDirty() && !isOccupied();
     }
+
+    public void checkIn(){
+        this.dirty = true;
+        this.occupied = true;
+    }
+
+    public void checkOut(){
+        this.occupied = false;
+        cleanRoom();
+    }
+
+    public void cleanRoom(){
+        this.dirty = false;
+    }
 }
