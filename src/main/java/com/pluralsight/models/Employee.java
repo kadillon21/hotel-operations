@@ -1,5 +1,9 @@
 package com.pluralsight.models;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class Employee {
 
     private int employeeID;
@@ -7,8 +11,9 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
-    private int startTime;
-    private int endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+
 
     public Employee(int employeeID, String name, String department, double payRate, double hoursWorked) {
         this.employeeID = employeeID;
@@ -56,11 +61,27 @@ public class Employee {
         return 0;
     }
 
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void punchTimeCard(String type) {
+        if (type.equalsIgnoreCase("in")){
+            this.startTime = LocalDateTime.now();
+        } else if (type.equalsIgnoreCase("out")){
+            this.endTime = LocalDateTime.now();
+        }
+    }
+
     public void punchTimeCard(String type, int time) {
         if (type.equalsIgnoreCase("in")){
-            this.startTime = time;
+            this.startTime = this.startTime.withHour(time);
         } else if (type.equalsIgnoreCase("out")){
-            this.endTime = time;
+            this.endTime = this.startTime.withHour(time);
         }
     }
 }
